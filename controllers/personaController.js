@@ -24,6 +24,15 @@ const getPersonas = (req, res) => {
     })
 }
 
+const getCorreos = (res) => {
+    Persona.find({}, (err, correo) =>{
+        if(err){
+            return res.status(400)
+        }
+        return res.status(200).send(correo)
+    })
+}
+
 const getSpecificPersona = (req, res) => {
     const {id} = req.params;
     Persona.findById(id, (err, persona) => {
@@ -60,6 +69,7 @@ const deletePersona = (req, res) => {
 module.exports = {
     createPersona,
     getPersonas,
+    getCorreos,
     getSpecificPersona,
     updatePersona,
     deletePersona

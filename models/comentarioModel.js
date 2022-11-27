@@ -4,15 +4,18 @@ const Schema = mongoose.Schema;
 const ComentarioSchema = new Schema({
     usuario: {
         type: Schema.ObjectId,
-        ref: 'persona'
+        ref: 'persona',
+        match: /[A-Za-z0-9]+/
     },
     asamblea: {
         type: Schema.ObjectId,
-        ref: 'asamblea'
+        ref: 'asamblea',
+        match: /[A-Za-z0-9]+/
     },
     comentario: {
         type: String,
-        required: true
+        required: true,
+        match: /[A-Za-z0-9]+\.,/
     }
 });
 

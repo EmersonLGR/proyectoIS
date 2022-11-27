@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const AsambleaRealizadaSchema = new Schema({
     asamblea:{
         type: Schema.ObjectId,
-        ref: 'asamblea'
+        ref: 'asamblea',
+        match: /[A-Za-z0-9]+/
     },
     acta:{
         type: String,

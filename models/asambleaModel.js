@@ -4,15 +4,18 @@ const Schema = mongoose.Schema;
 const AsambleaSchema = new Schema({
     usuario:{
         type: Schema.ObjectId,
-        ref: 'persona'
+        ref: 'persona',
+        match: /[A-Za-z0-9]+/
     },
     fecha: {
         type: String,
-        required: true
+        required: true,
+        match: /\d\d\/\d\d\/\d\d\d\d/
     },
     description: {
         type: String,
-        required: true
+        required: true,
+        match: /([A-Za-z0-9]+( [A-Za-z0-9]+)+)/
     },
     tipo:{
         enum:[
