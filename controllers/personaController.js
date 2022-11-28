@@ -60,7 +60,6 @@ const deletePersona = (req, res) => {
 module.exports = {
     createPersona,
     getPersonas,
-    getCorreos,
     getSpecificPersona,
     updatePersona,
     deletePersona
