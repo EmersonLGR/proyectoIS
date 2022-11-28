@@ -1,28 +1,42 @@
 const nodemailer = require('nodemailer')
+const Persona = require('./models/personaModel')
+require('dotenv').config();
 
 const createTrans = () => {
     const transport = nodemailer.createTransport({
-        host: "smtp.mailtrap.io",
-        port: 2525,
+        host: "smtp.gmail.com",
+        port: 465,
         auth: {
-          user: "00a20a9fd860fc",
-          pass: "5ca35ccf7208a9"
+          user: process.env.email,
+          pass: process.env.email_password
         }
     });
     return transport;
 }
 
-const sendMail = async(correos, asamblea) => {
+const sendMail = async(fechaAsamblea, tipo) => {
     const transporter = createTrans()
+    let correo = []
+
+    Persona.find({}, (err, persona) => {
+        if(err){
+            console.log(400);
+        }
+        persona.forEach(objeto => correo.push(objeto.correo));
+    })
+
+    console.log(correo);
+
     const info = await transporter.sendMail({
-        from: '',
-        to: correos,
-        subject: 'Se ha registrados una nueva asamblea a realizar el dia ${asamblea.fecha}',
-        html: ""
+        from: 'notificacion asamblea',
+        to: correo,
+        subject: "Notificación Asamblea",
+        text: "Se cita asamblea el dia " + fechaAsamblea + ", de tipo " + tipo +
+        ", se pide puntualidad."
     });
     console.log("Message sent: %s", info.messageId);
 
     return
 }
 
-exports.sendMail = (correos, asamblea) => sendMail(correos, asamblea);
+exports.sendMail = (fechaAsamblea, tipo) => sendMail(fechaAsamblea, tipo);

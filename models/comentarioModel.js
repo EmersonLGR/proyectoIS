@@ -12,7 +12,8 @@ const ComentarioSchema = new Schema({
     },
     comentario: {
         type: String,
-        required: true
+        required: true,
+        match: /[A-Za-z0-9]+/
     }
 });
 
