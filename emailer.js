@@ -1,5 +1,6 @@
 const nodemailer = require('nodemailer')
-const usuario = require('./controllers/personaController')
+const Persona = require('./models/personaModel')
+require('dotenv').config();
 
 const createTrans = () => {
     const transport = nodemailer.createTransport({
@@ -15,11 +16,18 @@ const createTrans = () => {
 
 const sendMail = async(fechaAsamblea, tipo) => {
     const transporter = createTrans()
-    const correo = usuario.getCorreos
+
+    Persona.find({}, (err, correo) =>{
+        if(err){
+            return res.status(400)
+        }
+        const correos = correo
+        return res.status(200).send(correo)
+    })
 
     const info = await transporter.sendMail({
         from: 'notificacion asamblea',
-        to: correo,
+        to: correos,
         subject: "Notificación Asamblea",
         text: "Se cita asamblea el dia " + fechaAsamblea + ", de tipo " + tipo +
         "se pide puntualidad"
