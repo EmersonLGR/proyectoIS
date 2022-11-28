@@ -17,10 +17,12 @@ const AsambleaSchema = new Schema({
         match: /[A-Za-z0-9]+/
     },
     tipo:{
+        type: String,
         enum:[
             'Informativa',
             'Extraordinaria'
-        ]
+        ],
+        default: 'Informativa'
     }
 });
 

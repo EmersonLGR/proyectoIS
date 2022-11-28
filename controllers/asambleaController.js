@@ -1,5 +1,5 @@
 const Asamblea = require('../models/asambleaModel');
-const Persona = require('../controllers/personaController')
+const Persona = require('../models/personaModel');
 const Correo = require('../emailer')
 
 const createAsamblea = (req, res) =>{
@@ -11,18 +11,24 @@ const createAsamblea = (req, res) =>{
         tipo
     });
     try {
-        user = Persona.getSpecificPersona(usuario)
-        console.log(user) 
-        if (user.role == "directiva") {
-            newAsamblea.save((err, asamblea) => {
-                if(err){
-                    return res.status(400)
-                }else{
-                    Correo.sendMail(fecha, tipo)
-                    return res.status(200).send(asamblea)
-                }
-            })
-        }
+        Persona.findById(usuario, (err, persona) => {
+            if(err){
+                return res.status(400)
+            }
+            if (!persona){
+                return res.status(404).send({message: "Persona no encontrada"})
+            }
+            if (persona.role == "directiva") {
+                newAsamblea.save((err, asamblea) => {
+                    if(err){
+                        return res.status(400)
+                    }else{
+                        Correo.sendMail(fecha, tipo)
+                        return res.status(200).send(asamblea)
+                    }
+                })
+            }
+        })
     } catch (error) {
         return res.status(401)
     }
