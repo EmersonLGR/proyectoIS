@@ -1,4 +1,4 @@
-const Comentario = require('../models/ComentarioModel');
+const Comentario = require('../models/comentarioModel');
 
 const createComentario = (req, res) =>{
     const {usuario, asamblea, comentariotxt} = req.body;
