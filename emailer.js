@@ -32,7 +32,7 @@ const sendMail = async(fechaAsamblea, tipo) => {
         to: correo,
         subject: "Notificación Asamblea",
         text: "Se cita asamblea el dia " + fechaAsamblea + ", de tipo " + tipo +
-        " se pide puntualidad"
+        ", se pide puntualidad."
     });
     console.log("Message sent: %s", info.messageId);
 
