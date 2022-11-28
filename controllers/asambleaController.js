@@ -12,7 +12,8 @@ const createAsamblea = (req, res) =>{
     });
     try {
         user = Persona.getSpecificPersona(usuario)
-        if (user.role == directiva) {
+        console.log(user) 
+        if (user.role == "directiva") {
             newAsamblea.save((err, asamblea) => {
                 if(err){
                     return res.status(400)

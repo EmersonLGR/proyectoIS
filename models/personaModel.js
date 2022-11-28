@@ -13,8 +13,7 @@ const PersonaSchema = new Schema({
             'directiva',
             'user'
         ],
-        default: 'user',
-        match: /([a-zA-Z])/
+        default: 'user'
     },
     correo: {
         type: String,
