@@ -1,4 +1,4 @@
-import { Card, CardBody } from "@chakra-ui/react";
+import { Card, CardBody, CardFooter, Divider } from "@chakra-ui/react";
 import React from "react";
 
 const card = (fechaAsamblea, tema, tipoCaracter) => {
@@ -15,6 +15,10 @@ const card = (fechaAsamblea, tema, tipoCaracter) => {
             </Text>
         </Stack>
       </CardBody>
+      <Divider />
+      <CardFooter>
+        
+      </CardFooter>
     </Card>
   )
 }
