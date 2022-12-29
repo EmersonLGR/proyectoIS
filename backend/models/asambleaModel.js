@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const AsambleaSchema = new Schema({
     usuario:{
         type: Schema.ObjectId,
-        ref: 'persona'
+        ref: 'persona',
+        required: true
     },
     fecha: {
         type: String,
