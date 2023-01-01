@@ -1,46 +1,52 @@
 import {React, useEffect, useState} from "react";
-import { TableContainer, Table, TableCaption, Thead, Tr, Th, Tbody, Td, Heading, Button, Center } from "@chakra-ui/react"
-import axios from 'axios'
+import { TableContainer, Table, TableCaption, Thead, Tr, Th, Tbody, Td, Heading, Button, Flex, Spacer, Container, Stack } from "@chakra-ui/react"
+import { getAsambleas } from '../data/asambleas'
+import {useRouter} from 'next/router'
 
 const index = () => {
 
   const [asambleas, setAsamblea] = useState([{
-    id: '',
+    type:'',
+    _id: '',
     user: '',
     date: '',
-    description: '',
-    type:''
+    description: ''
   }])
 
-  const getAsambleas = async () =>{
-    const response = await axios.get(`${process.env.SERVIDOR}/asamblea`)
-    setAsamblea(response.data)
-  }
+  const router = useRouter()
 
   const contentTable = () => {
     return asambleas.map(asamblea =>{
       return(
         <Tr key={asamblea._id}>
-          <Td>{asamblea.date}</Td>
+          <Td>{asamblea.fecha}</Td>
           <Td>{asamblea.description}</Td>
-          <Td>{asamblea.type}</Td>
+          <Td>{asamblea.tipo}</Td>
         </Tr>
       )
     })
   }
 
   useEffect(() => {
-    getAsambleas()
+    getAsambleas().then(res => {setAsamblea(res.data)})
   }, [])
 
   return(
-    <>
-    <Center>
-      <Heading>Asambleas Realizadas</Heading>
-    </Center>
+    <Container maxW="container.xl" mt={10}>
+      <Flex>
+        <Spacer/>
+      <Button colorScheme={"telegram"} onClick={()=>router.push('./identificar')}>Identificar</Button>
+      </Flex>
+      <Heading size={"2xl"} textAlign={"center"}>Asambleas Agendadas</Heading>
+      <Spacer/>
+
+    <Spacer/>
+
+    <Button colorScheme={"telegram"} onClick={()=>router.push('./addAsamblea')}>Agregar Asamblea</Button>
+
     <TableContainer>
       <Table variant='simple'>
-        <TableCaption>Asambleas Realizadas</TableCaption>
+        <TableCaption>Asambleas Agendadas</TableCaption>
           <Thead>
             <Tr>
               <Th>Fecha</Th>
@@ -49,13 +55,11 @@ const index = () => {
             </Tr>
           </Thead>
           <Tbody>
-            <Tr>
               {contentTable()}
-            </Tr>
           </Tbody>
       </Table>
     </TableContainer>
-    </>
+    </Container>
   )
 }
 
