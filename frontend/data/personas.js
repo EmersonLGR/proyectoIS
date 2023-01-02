@@ -26,7 +26,7 @@ const deletePersona = (id) => {
 }
 
 const login = (correo) => {
-    const response = axios.post(`${process.env.SERVIDOR}/login`, correo);
+    const response = axios.post(`${process.env.SERVIDOR}/login`, {correo});
     return response
 }
 
