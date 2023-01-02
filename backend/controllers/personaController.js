@@ -57,10 +57,15 @@ const deletePersona = (req, res) => {
     })
 }
 
+const login = (req, res) => {
+    return res.status(200).send({message: "Se identificado correctamente"})
+}
+
 module.exports = {
     createPersona,
     getPersonas,
     getSpecificPersona,
     updatePersona,
-    deletePersona
+    deletePersona,
+    login
 }

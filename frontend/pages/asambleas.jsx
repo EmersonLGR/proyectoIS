@@ -19,9 +19,11 @@ const asamblea = () => {
     return asambleas.map(asamblea =>{
       return(
         <Tr key={asamblea._id}>
-          <Td>{asamblea.fecha}</Td>
-          <Td>{asamblea.description}</Td>
-          <Td>{asamblea.tipo}</Td>
+            <Td><Button colorScheme={"telegram"} onClick={()=> router.push(`./asamblea/${asamblea._id}`)}>Editar</Button></Td>
+            <Td>{asamblea.fecha}</Td>
+            <Td>{asamblea.description}</Td>
+            <Td>{asamblea.tipo}</Td>
+            <Td><Button colorScheme={"telegram"} >Ver</Button></Td>
         </Tr>
       )
     })
@@ -49,9 +51,10 @@ const asamblea = () => {
         <TableCaption>Asambleas Agendadas</TableCaption>
           <Thead>
             <Tr>
-              <Th>Fecha</Th>
-              <Th>Descripción</Th>
-              <Th>Tipo</Th>
+                <Th></Th>
+                <Th>Fecha</Th>
+                <Th>Descripción</Th>
+                <Th>Tipo</Th>
             </Tr>
           </Thead>
           <Tbody>

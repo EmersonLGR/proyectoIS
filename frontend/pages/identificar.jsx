@@ -1,10 +1,21 @@
 import { Button, Center, Container, FormControl, FormLabel, Heading, Input, Stack } from "@chakra-ui/react";
-import React from "react";
+import { useState, useEffect} from "react";
+import {login} from '../data/personas'
 
 const iniciarSesion = () => {
 
-    const handleChange = (e) =>{
+    const [correo, setCorreo] = useState('')
 
+    const handleChange = (e) =>{
+        setCorreo(e.target.value)
+    }
+
+    const onSubmit = (e) => {
+        e.preventDefault()
+        const response = login(correo)
+        if(response.status === 200){
+            localStorage.setItem('token', correo)
+        }
     }
 
     return(
@@ -17,7 +28,7 @@ const iniciarSesion = () => {
                 </FormControl>
             </Stack>
             <Center>
-            <Button colorScheme={"telegram"} mt={10} mb={10}>Verificar Identidad</Button>
+            <Button colorScheme={"telegram"} mt={10} mb={10} onClick={onSubmit}>Verificar Identidad</Button>
             </Center>
         </Container>
     )

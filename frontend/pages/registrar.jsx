@@ -1,31 +1,51 @@
-import { Container, FormControl, FormLabel, Input, RadioGroup, HStack, Radio, Heading, Stack, Button, Center } from "@chakra-ui/react";
-import { React } from "react"
+import { Container, FormControl, FormLabel, Input, Select, option, Heading, Stack, Button, Center } from "@chakra-ui/react";
+import { useState } from "react"
+import { createPersona } from '../data/personas'
 
 const registrar = () => {
+
+    const [persona, setPersona] = useState({
+        nombre: '',
+        role: 'user',
+        correo: ''
+    })
+
+    const handleChange = (e) => {
+        setPersona({
+            ...persona,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const submitPersona = (e) => {
+        e.preventDefault()
+        createPersona(persona).then(res => {
+            console.log(res.data.nombre)
+        })
+    }
+
     return(
         <Container size="md" mt={10}>
             <Heading as={"h1"} size={"2xl"} textAlign={"center"}>Registro</Heading>
             <Stack spacing={4} mt={10}>
-                <FormControl id="name">
+                <FormControl id="name" isRequired>
                     <FormLabel>Nombre</FormLabel>
-                    <Input type="text" placeholder="Francisco"/>
+                    <Input name="nombre" type="text" placeholder="Francisco" onChange={handleChange}/>
                 </FormControl>
-                <FormControl id="role">
+                <FormControl id="role" isRequired>
                     <FormLabel>Rol</FormLabel>
-                    <RadioGroup defaultValue='Usuario'>
-                        <HStack spacing='24px'>
-                            <Radio value='Usuario'>Usuario</Radio>
-                            <Radio value='Directiva'>Directiva</Radio>
-                        </HStack>
-                    </RadioGroup>
+                    <Select name="role" onChange={handleChange} placeholder='Rol'>
+                        <option>user</option>
+                        <option>directiva</option>
+                    </Select>
                 </FormControl>
-                <FormControl>
+                <FormControl id="correo" isRequired>
                     <FormLabel>Correo Electronico</FormLabel>
-                    <Input type={"email"} placeholder={"correo@ejemplo.com"} />
+                    <Input name="correo" type={"email"} placeholder={"correo@ejemplo.com"} onChange={handleChange}/>
                 </FormControl>
             </Stack>
             <Center>
-                <Button colorScheme={"telegram"} mt={10} mb={10}>Registrar</Button>
+                <Button colorScheme={"telegram"} mt={10} mb={10} onClick={submitPersona}>Registrar</Button>
             </Center>
         </Container>
     )

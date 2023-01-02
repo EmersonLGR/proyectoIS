@@ -1,15 +1,20 @@
-import { Container } from "@chakra-ui/react";
+import { Button, Container, Heading, Stack } from "@chakra-ui/react";
 import { React } from "react"
-import nav from "../components/navbar";
+import { useRouter } from 'next/router'
+
 
 const index = () => {
+
+  const router = useRouter()
+
   return(
-    <>
-    <nav/>
-      <Container>
-        
-      </Container>
-    </>
+    <Container size={"md"} mt={10}>
+      <Heading as={"h1"} size={"2xl"} textAlign={"center"}>Asamblea Web</Heading>
+      <Stack spacing={4} mt={10} direction='column'>
+        <Button colorScheme={"telegram"} onClick={()=>router.push('./identificar')}>Ingresar</Button>
+        <Button colorScheme={"telegram"} onClick={()=>router.push('./registrar')}>Registrar</Button>
+      </Stack>
+    </Container>
   )
 }
 
