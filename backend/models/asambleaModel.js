@@ -10,7 +10,7 @@ const AsambleaSchema = new Schema({
     fecha: {
         type: String,
         required: true,
-        match: /[0-9]{4}-[0-9]{2}-[0-9]{2}/
+        match: /[0-9]{2}-[0-9]{2}-[0-9]{4}/
     },
     description: {
         type: String,

@@ -29,7 +29,6 @@ const addAsamblea = () => {
                 <FormControl id="date">
                     <FormLabel>Fecha</FormLabel>
                         <Input type='date' name={"date"} onChange={handleChange}/>
-                    <FormHelperText>yyyy/dd/mm</FormHelperText>
                 </FormControl>
                 <FormControl id="type">
                     <FormLabel>Tipo</FormLabel>
@@ -45,7 +44,7 @@ const addAsamblea = () => {
                     <Textarea name={"description"} onChange={handleChange}></Textarea>
                 </FormControl>
             </Stack>
-            <Button onClick={submitAsamblea}></Button>
+            <Button onClick={submitAsamblea}>Agregar</Button>
         </Container>
     )
 }
