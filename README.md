@@ -26,7 +26,7 @@ info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this comm
       email_password = rczdyxklytnyeqey
 
   - .env PARA EL LOCALHOST:
-      PORT = 1167
+      PORT = 3001
       DB = mongodb://thignq:pLwNOTPPWAIQclfV@ac-q0xykyq-shard-00-00.s3fgkvd.mongodb.net:27017,ac-q0xykyq-shard-00-01.s3fgkvd.mongodb.net:27017,ac-    q0xykyq-       shard-00-02.s3fgkvd.mongodb.net:27017/?ssl=true&replicaSet=atlas-11e8j0-shard-0&authSource=admin&retryWrites=true&w=majority
       email = asamblea.notificacion@gmail.com
       email_password = rczdyxklytnyeqey
