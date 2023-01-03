@@ -1,4 +1,4 @@
-import { Button, Center, Container, FormControl, FormLabel, Heading, Input, Stack } from "@chakra-ui/react";
+import { Box, Button, Center, Container, Flex, FormControl, FormLabel, Heading, Input, Stack } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { useState} from "react";
 import {login} from '../data/personas'
@@ -22,18 +22,54 @@ const iniciarSesion = () => {
     }
 
     return(
-        <Container maxW="md" mt={10}>
-            <Heading as={"h1"} size={"2xl"} textAlign={"center"}>Identificación</Heading>
-            <Stack spacing={4} mt={10}>
+        <Box
+        h='100vh'
+         bg='gray'
+         bgSize='cover'> 
+           <Flex
+           direction='column'
+           alignItems='center'
+           justify='center'
+           h='100%'
+           bg='rgb(0 0 0 / 50%)'
+           p={['0 10%', null, '0 20%']}
+           > 
+            <Heading 
+              color='white'
+              textTransform='uppercase'
+              textAlign="center"
+              fontWeight='light'
+              letterSpacing='5px'
+            >Identificación</Heading>
+            <Stack
+            direction={{base: 'column', md: 'column'}}
+            spacing='40px'
+             mt='30px'
+            w={['100%', null, 'auto']}
+            >
                 <FormControl id="correo" isRequired>
-                    <FormLabel>Correo Electronico</FormLabel>
-                    <Input type="email" placeholder="example@email.com" onChange={handleChange}/>
+                    <FormLabel spacing='40px'
+                     mt='30px'>Correo Electronico</FormLabel>
+                    <Input  color='white' placeholder="example@email.com" onChange={handleChange}/>
                 </FormControl>
             </Stack>
             <Center>
-            <Button colorScheme={"telegram"} mt={10} mb={10} onClick={onSubmit}>Verificar Identidad</Button>
+            <Button
+            variant='outline'
+            size='lg'
+            textTransform='uppercase'
+            fontWeight='light'
+            borderRadius='0'
+            color='white'
+            letterSpacing='1px'
+            _hover={{
+            color:'black',
+            bg:'white'}}
+            onClick={onSubmit}> Identidad
+            </Button>
             </Center>
-        </Container>
+            </Flex>
+            </Box>
     )
 }
 
