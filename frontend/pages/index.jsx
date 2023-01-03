@@ -1,4 +1,4 @@
-import { Button, Container, Heading, Stack } from "@chakra-ui/react";
+import { Button, Box, Heading, Stack, Flex } from "@chakra-ui/react";
 import { React } from "react"
 import { useRouter } from 'next/router'
 
@@ -8,13 +8,67 @@ const index = () => {
   const router = useRouter()
 
   return(
-    <Container size={"md"} mt={10}>
-      <Heading as={"h1"} size={"2xl"} textAlign={"center"}>Asamblea Web</Heading>
-      <Stack spacing={4} mt={10} direction='column'>
-        <Button colorScheme={"teal"} onClick={()=>router.push('./identificar')}>Ingresar</Button>
-        <Button colorScheme={"teal"} onClick={()=>router.push('./registrar')}>Registrar</Button>
+    <Box
+    h='100vh'
+    bg='gray'
+    bgSize='cover'
+    >
+      <Flex
+      direction='column'
+      alignItems='center'
+      justify='center'
+      h='100%'
+      bg='rgb(0 0 0 / 50%)'
+      p={['0 10%', null, '0 20%']}
+      >
+      <Heading
+      color='white'
+      textTransform='uppercase'
+      textAlign="center"
+      fontWeight='light'
+      letterSpacing='5px'
+        >
+         Assemblies
+        </Heading>
+      <Stack
+      direction={{base: 'column', md: 'row'}}
+      spacing='40px'
+      mt='30px'
+      w={['100%', null, 'auto']}
+      >
+        <Button variant='outline'
+        size='lg'
+        textTransform='uppercase'
+        fontWeight='light'
+        borderRadius='0'
+        color='white'
+        letterSpacing='1px'
+        _hover={{
+          color:'black',
+          bg:'white'
+        }}
+        onClick={()=>router.push('./identificar')}
+        >
+          Ingresar
+        </Button>
+        <Button variant='outline'
+        size='lg'
+        textTransform='uppercase'
+        fontWeight='light'
+        borderRadius='0'
+        color='white'
+        letterSpacing='1px'
+        _hover={{
+          color:'black',
+          bg:'white'
+        }}
+        onClick={()=>router.push('./registrar')}
+        >
+          Registrar
+        </Button>
       </Stack>
-    </Container>
+      </Flex>
+      </Box>
   )
 }
 
