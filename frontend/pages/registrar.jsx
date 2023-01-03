@@ -1,4 +1,4 @@
-import { Container, FormControl, FormLabel, Input, Select, option, Heading, Stack, Button, Center } from "@chakra-ui/react";
+import { Container, FormControl, FormLabel, Input, Select, option, Heading, Stack, Button, Center, Box, Flex } from "@chakra-ui/react";
 import { useState } from "react"
 import { createPersona } from '../data/personas'
 
@@ -25,29 +25,68 @@ const registrar = () => {
     }
 
     return(
-        <Container size="md" mt={10}>
-            <Heading as={"h1"} size={"2xl"} textAlign={"center"}>Registro</Heading>
-            <Stack spacing={4} mt={10}>
+        <Box
+        h='100vh'
+         bg='gray'
+         bgSize='cover'> 
+            <Heading
+            color='white'
+            textTransform='uppercase'
+            textAlign="center"
+            fontWeight='light'
+            letterSpacing='5px'
+           >Registro</Heading>
+           <Flex
+             direction='column'
+             alignItems='center'
+             justify='center'
+             h='100%'
+             bg='rgb(0 0 0 / 50%)'
+             p={['0 10%', null, '0 20%']}
+           > 
+            <Stack direction={{base: 'column', md: 'column'}}
+             spacing='40px'
+              mt='30px'
+                w={['100%', null, 'auto']}>
                 <FormControl id="name" isRequired>
-                    <FormLabel>Nombre</FormLabel>
+                    <FormLabel
+                     spacing='40px'
+                     mt='30px'
+                    >Nombre</FormLabel>
                     <Input name="nombre" type="text" placeholder="Francisco" onChange={handleChange}/>
                 </FormControl>
                 <FormControl id="role" isRequired>
-                    <FormLabel>Rol</FormLabel>
+                    <FormLabel
+                     spacing='40px'
+                     mt='30px'>Rol</FormLabel>
                     <Select name="role" onChange={handleChange} placeholder='Rol'>
                         <option>user</option>
                         <option>directiva</option>
                     </Select>
                 </FormControl>
-                <FormControl id="correo" isRequired>
-                    <FormLabel>Correo Electronico</FormLabel>
-                    <Input name="correo" type={"email"} placeholder={"correo@ejemplo.com"} onChange={handleChange}/>
+                <FormControl borderRadius='0' id="correo" isRequired>
+                    <FormLabel
+                     spacing='40px'
+                     mt='30px'>Correo Electronico</FormLabel>
+                    <Input name="correo" type={"email"} color='white' placeholder={"correo@ejemplo.com"} onChange={handleChange}/>
                 </FormControl>
             </Stack>
             <Center>
-                <Button colorScheme={"telegram"} mt={10} mb={10} onClick={submitPersona}>Registrar</Button>
+                <Button 
+                variant='outline'
+                size='lg'
+                textTransform='uppercase'
+                fontWeight='light'
+                borderRadius='0'
+                color='white'
+                letterSpacing='1px'
+                _hover={{
+                color:'black',
+                bg:'white'
+        }} onClick={submitPersona}>Registrar</Button>
             </Center>
-        </Container>
+            </Flex>
+            </Box>
     )
 }
 
