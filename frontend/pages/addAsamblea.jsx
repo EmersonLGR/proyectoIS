@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { FormControl, FormLabel, Input, Container, Heading, Select, Stack, Button, Textarea } from '@chakra-ui/react'
+import { FormControl, FormLabel, Input, Container, Heading, Select, Stack, Button, Textarea, Box, Flex } from '@chakra-ui/react'
 import { createAsamblea } from '../data/asambleas'
 import { useRouter } from "next/router"
 
@@ -28,9 +28,32 @@ const addAsamblea = () => {
     }
 
     return(
-        <Container maxW="container.xl" mt={10}>
-            <Stack spacing={4} mt={10}>
-                <Heading as={"h1"} size={"2xl"} textAlign={"center"}>Crear Asamblea</Heading>
+       <Box
+       h='100vh'
+   bg='gray'
+   bgSize='cover'
+       > 
+       <Flex
+       direction='column'
+       alignItems='center'
+       justify='center'
+       h='100%'
+       bg='rgb(0 0 0 / 50%)'
+       p={['0 10%', null, '0 20%']}
+       > 
+            <Stack 
+             direction={{base: 'column', md: 'column'}}
+             spacing='40px'
+             mt='30px'
+             w={['100%', null, 'auto']}
+            >
+                <Heading
+                   color='white'
+                   textTransform='uppercase'
+                   textAlign="center"
+                   fontWeight='light'
+                   letterSpacing='5px'  
+                >Crear Asamblea</Heading>
                 <FormControl id="date" isRequired>
                     <FormLabel>Fecha</FormLabel>
                         <Input type='date' name={"date"} onChange={handleChange}/>
@@ -47,9 +70,37 @@ const addAsamblea = () => {
                     <Textarea name={"description"} onChange={handleChange}></Textarea>
                 </FormControl>
             </Stack>
-            <Button colorScheme={"teal"} onClick={submitAsamblea}>Agregar</Button>
-            <Button colorScheme={"red"} onClick={()=>router.push('./asambleas')}>Cancelar</Button>
-        </Container>
+            <Button
+            variant='outline'
+            size='lg'
+            textTransform='uppercase'
+            fontWeight='light'
+            borderRadius='0'
+            color='white'
+            colorScheme='teal'
+            letterSpacing='1px'
+                     _hover={{
+                     color:'black',
+                     bg:'green'
+             }}
+            >Agregar</Button>
+            <Button 
+             variant='outline'
+             size='lg'
+             textTransform='uppercase'
+             fontWeight='light'
+             borderRadius='0'
+             color='white'
+             colorScheme='teal'
+             letterSpacing='1px'
+                      _hover={{
+                      color:'black',
+                      bg:'red'
+              }}
+            colorScheme={"red"} onClick={()=>router.push('./asambleas')}>Cancelar
+            </Button>
+            </Flex>
+            </Box>
     )
 }
 
