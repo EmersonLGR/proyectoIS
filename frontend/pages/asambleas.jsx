@@ -1,5 +1,5 @@
 import {React, useEffect, useState} from "react";
-import { TableContainer, Table, TableCaption, Thead, Tr, Th, Tbody, Td, Heading, Button, Flex, Spacer, Container, Stack } from "@chakra-ui/react"
+import { TableContainer, Table, TableCaption, Thead, Tr, Th, Tbody, Td, Heading, Button, Flex, Spacer, Container, Stack, Box } from "@chakra-ui/react"
 import { getAsambleas } from '../data/asambleas'
 import {useRouter} from 'next/router'
 
@@ -19,11 +19,35 @@ const asamblea = () => {
     return asambleas.map(asamblea =>{
       return(
         <Tr key={asamblea._id}>
-            <Td><Button colorScheme={"teal"} onClick={()=> router.push(`./asamblea/${asamblea._id}`)}>Editar</Button></Td>
+            <Td><Button
+            variant='outline'
+            size='lg'
+            textTransform='uppercase'
+            fontWeight='light'
+            borderRadius='0'
+            colorScheme='teal'
+            letterSpacing='1px'
+               _hover={{
+               color:'black',
+               bg:'white'
+       }}
+              onClick={()=> router.push(`./asamblea/${asamblea._id}`)}>Editar</Button></Td>
             <Td>{asamblea.fecha}</Td>
             <Td>{asamblea.description}</Td>
             <Td>{asamblea.tipo}</Td>
-            <Td><Button colorScheme={"teal"} >Ver</Button></Td>
+            <Td><Button 
+             variant='outline'
+             size='lg'
+             textTransform='uppercase'
+             fontWeight='light'
+             borderRadius='0'
+             colorScheme='teal'
+             letterSpacing='1px'
+                _hover={{
+                color:'black',
+                bg:'white'
+        }}
+             >Ver</Button></Td>
         </Tr>
       )
     })
@@ -34,13 +58,42 @@ const asamblea = () => {
   }, [])
 
   return(
-    <Container maxW="container.xl" mt={10}>
-      <Heading size={"2xl"} textAlign={"center"}>Asambleas Agendadas</Heading>
-    <Spacer/>
+   <Box
+   h='100vh'
+   bg='gray'
+   bgSize='cover'
+   > 
+   <Flex
+   direction='column'
+   alignItems='center'
+   justify='center'
+   h='100%'
+   bg='rgb(0 0 0 / 50%)'
+   p={['0 10%', null, '0 20%']}
+   > 
+      <Heading
+      color='white'
+      textTransform='uppercase'
+      textAlign="center"
+      fontWeight='light'
+      letterSpacing='5px' 
+      >Asambleas Agendadas</Heading>
 
     <Flex>
-      <Spacer/>
-      <Button colorScheme={"teal"} onClick={()=>router.push('./addAsamblea')}>Agregar Asamblea</Button>
+
+      <Button
+       variant='outline'
+       size='lg'
+       textTransform='uppercase'
+       fontWeight='light'
+       borderRadius='0'
+       colorScheme='teal'
+       letterSpacing='1px'
+                _hover={{
+                color:'black',
+                bg:'white'
+        }}
+       onClick={()=>router.push('./addAsamblea')}>Agregar Asamblea</Button>
     </Flex>
 
     <TableContainer>
@@ -59,7 +112,8 @@ const asamblea = () => {
           </Tbody>
       </Table>
     </TableContainer>
-    </Container>
+    </Flex>
+    </Box>
   )
 }
 
