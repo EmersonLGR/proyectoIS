@@ -19,11 +19,11 @@ const asamblea = () => {
     return asambleas.map(asamblea =>{
       return(
         <Tr key={asamblea._id}>
-            <Td><Button colorScheme={"telegram"} onClick={()=> router.push(`./asamblea/${asamblea._id}`)}>Editar</Button></Td>
+            <Td><Button colorScheme={"teal"} onClick={()=> router.push(`./asamblea/${asamblea._id}`)}>Editar</Button></Td>
             <Td>{asamblea.fecha}</Td>
             <Td>{asamblea.description}</Td>
             <Td>{asamblea.tipo}</Td>
-            <Td><Button colorScheme={"telegram"} >Ver</Button></Td>
+            <Td><Button colorScheme={"teal"} >Ver</Button></Td>
         </Tr>
       )
     })
@@ -35,16 +35,13 @@ const asamblea = () => {
 
   return(
     <Container maxW="container.xl" mt={10}>
-      <Flex>
-        <Spacer/>
-      <Button colorScheme={"telegram"} onClick={()=>router.push('./identificar')}>Identificar</Button>
-      </Flex>
       <Heading size={"2xl"} textAlign={"center"}>Asambleas Agendadas</Heading>
-      <Spacer/>
-
     <Spacer/>
 
-    <Button colorScheme={"telegram"} onClick={()=>router.push('./addAsamblea')}>Agregar Asamblea</Button>
+    <Flex>
+      <Spacer/>
+      <Button colorScheme={"teal"} onClick={()=>router.push('./addAsamblea')}>Agregar Asamblea</Button>
+    </Flex>
 
     <TableContainer>
       <Table variant='simple'>

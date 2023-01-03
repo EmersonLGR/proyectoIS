@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { FormControl, FormLabel, Input, Container, Heading, Select, Stack, Button, Textarea } from '@chakra-ui/react'
 import { createAsamblea } from '../data/asambleas'
+import { useRouter } from "next/router"
 
 const addAsamblea = () => {
 
@@ -9,6 +10,8 @@ const addAsamblea = () => {
         descrition: '',
         type: ''
     })
+
+    const router = useRouter()
 
     const handleChange = (e) => {
         setAsamblea({
@@ -44,7 +47,8 @@ const addAsamblea = () => {
                     <Textarea name={"description"} onChange={handleChange}></Textarea>
                 </FormControl>
             </Stack>
-            <Button colorScheme={"telegram"} onClick={submitAsamblea}>Agregar</Button>
+            <Button colorScheme={"teal"} onClick={submitAsamblea}>Agregar</Button>
+            <Button colorScheme={"red"} onClick={()=>router.push('./asambleas')}>Cancelar</Button>
         </Container>
     )
 }

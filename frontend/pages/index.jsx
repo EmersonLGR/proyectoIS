@@ -11,8 +11,8 @@ const index = () => {
     <Container size={"md"} mt={10}>
       <Heading as={"h1"} size={"2xl"} textAlign={"center"}>Asamblea Web</Heading>
       <Stack spacing={4} mt={10} direction='column'>
-        <Button colorScheme={"telegram"} onClick={()=>router.push('./identificar')}>Ingresar</Button>
-        <Button colorScheme={"telegram"} onClick={()=>router.push('./registrar')}>Registrar</Button>
+        <Button colorScheme={"teal"} onClick={()=>router.push('./identificar')}>Ingresar</Button>
+        <Button colorScheme={"teal"} onClick={()=>router.push('./registrar')}>Registrar</Button>
       </Stack>
     </Container>
   )

@@ -1,7 +1,6 @@
 import {React, useEffect, useState} from "react";
-import { TableContainer, Table, TableCaption, Thead, Tr, Th, Tbody, Td, Heading, Button, Flex, Spacer, Container, Stack } from "@chakra-ui/react"
+import { TableContainer, Table, Thead, Tr, Th, Tbody, Td, Heading, Button, Spacer, Container } from "@chakra-ui/react"
 import {useRouter} from 'next/router'
-import axios from "axios";
 import { getComentarios } from "../data/comentarios"
 const comentarios = () => {
 
@@ -12,9 +11,6 @@ const comentarios = () => {
   }])
 
   const router = useRouter()
-
-
-
 
   const contentTable = () => {
     return comentarios.map(comentario =>{
@@ -51,6 +47,7 @@ const comentarios = () => {
       </Table>
       <Spacer />
       <Button colorScheme={"telegram"} onClick={()=>router.push('./addComentario')}>Comentar</Button>
+      <Button colorScheme={"red"} onClick={()=>router.push('./asambleas')}>Cancelar</Button>
     </TableContainer>
     </Container>
   )

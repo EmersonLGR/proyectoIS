@@ -4,11 +4,26 @@ import { FormControl, FormLabel, Input, Container, Heading, Select, Stack, Butto
 import { useRouter } from "next/router";
 
 export const getServerSideProps = async (context) => {
-
-    const response = await getAsamblea(context.query.asamblea)
-    return {
-        props: {
-            data: response.data
+    try {
+        const response = await getAsamblea(context.query.asamblea)
+        if (response.status === 200){
+            return {
+                props: {
+                data: response.data
+                }
+            }
+        }else{
+            return {
+                redirect: {
+                    destination: "/"
+                }
+            }
+        }
+    } catch (error) {
+        return {
+            redirect: {
+                destination: "/"
+            }
         }
     }
 }

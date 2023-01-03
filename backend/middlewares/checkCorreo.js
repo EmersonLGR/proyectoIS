@@ -8,7 +8,7 @@ const check = (req, res) => {
         if (!persona) {
             return res.status(404).send({message: "Usuario no encontrado"})
         }
-        return res.status(200).send({message: "Usuario logeado correctamente"})
+        return res.status(200).send({message: "Usuario logeado correctamente", persona})
     })
 }
 
