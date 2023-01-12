@@ -3,7 +3,7 @@ import { TableContainer,  Table, TableCaption, Thead, Tr, Th, Tbody, Td, Heading
 import { getAsambleas } from '../data/asambleas'
 import {useRouter} from 'next/router'
 
-const asamblea = () => {
+const Asamblea = () => {
 
   const [asambleas, setAsamblea] = useState([{
     type:'',
@@ -118,4 +118,4 @@ const asamblea = () => {
   )
 }
 
-export default asamblea;
+export default Asamblea;

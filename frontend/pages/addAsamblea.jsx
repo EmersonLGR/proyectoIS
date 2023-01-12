@@ -5,7 +5,7 @@ import { useRouter } from "next/router"
 import FormInput from "../components/FormInput"
 import TextareaInput from "../components/TextareaInput"
 
-const addAsamblea = () => {
+const AddAsamblea = () => {
 
     const [asamblea, setAsamblea] = useState({
        
@@ -106,4 +106,4 @@ const addAsamblea = () => {
     )
 }
 
-export default addAsamblea;
+export default AddAsamblea;

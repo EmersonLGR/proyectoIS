@@ -5,7 +5,7 @@ import TextareaInput from "../components/TextareaInput"
 import {useRouter} from 'next/router'
 
 
-const addComentario = () => {
+const AddComentario = () => {
 
     const [comentario, setComentario] = useState({
         descrition: '',
@@ -61,4 +61,4 @@ const addComentario = () => {
     )
 }
 
-export default addComentario;
+export default AddComentario;
