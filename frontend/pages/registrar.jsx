@@ -1,6 +1,7 @@
 import { Container, FormControl, FormLabel, Input, Select, option, Heading, Stack, Button, Center, Box, Flex } from "@chakra-ui/react";
 import { useState } from "react"
 import { createPersona } from '../data/personas'
+import TextareaInput from "../components/TextareaInput"
 
 const registrar = () => {
 
@@ -29,13 +30,7 @@ const registrar = () => {
         h='100vh'
          bg='gray'
          bgSize='cover'> 
-            <Heading
-            color='white'
-            textTransform='uppercase'
-            textAlign="center"
-            fontWeight='light'
-            letterSpacing='5px'
-           >Registro</Heading>
+          
            <Flex
              direction='column'
              alignItems='center'
@@ -48,18 +43,28 @@ const registrar = () => {
              spacing='40px'
               mt='30px'
                 w={['100%', null, 'auto']}>
+                      <Heading
+            color='white'
+            textTransform='uppercase'
+            textAlign="center"
+            fontWeight='light'
+            letterSpacing='5px'
+           >Registro</Heading>
                 <FormControl id="name" isRequired>
                     <FormLabel
                      spacing='40px'
                      mt='30px'
+                     color='white'
                     >Nombre</FormLabel>
-                    <Input name="nombre" type="text" placeholder="Francisco" onChange={handleChange}/>
+                    <Input name="nombre" type="text" placeholder="Francisco" onChange={handleChange} value={persona.nombre} />
                 </FormControl>
                 <FormControl id="role" isRequired>
                     <FormLabel
                      spacing='40px'
-                     mt='30px'>Rol</FormLabel>
-                    <Select name="role" onChange={handleChange} placeholder='Rol'>
+                     mt='30px'
+                     color='white'
+                     >Rol</FormLabel>
+                    <Select name="role" onChange={handleChange} placeholder='Rol' value={persona.role}>
                         <option>user</option>
                         <option>directiva</option>
                     </Select>
@@ -67,11 +72,12 @@ const registrar = () => {
                 <FormControl borderRadius='0' id="correo" isRequired>
                     <FormLabel
                      spacing='40px'
-                     mt='30px'>Correo Electronico</FormLabel>
-                    <Input name="correo" type={"email"} color='white' placeholder={"correo@ejemplo.com"} onChange={handleChange}/>
+                     mt='30px'
+                     color='white'
+                     >Correo Electronico</FormLabel>
+                    <Input name="correo" type={"email"} color='white' placeholder={"correo@ejemplo.com"} onChange={handleChange} value={persona.correo} />
+                    
                 </FormControl>
-            </Stack>
-            <Center>
                 <Button 
                 variant='outline'
                 size='lg'
@@ -84,6 +90,9 @@ const registrar = () => {
                 color:'black',
                 bg:'white'
         }} onClick={submitPersona}>Registrar</Button>
+            </Stack>
+            <Center>
+             
             </Center>
             </Flex>
             </Box>
