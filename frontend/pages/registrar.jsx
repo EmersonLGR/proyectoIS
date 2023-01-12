@@ -2,8 +2,11 @@ import { Container, FormControl, FormLabel, Input, Select, option, Heading, Stac
 import { useState } from "react"
 import { createPersona } from '../data/personas'
 import TextareaInput from "../components/TextareaInput"
+import Swal from 'sweetalert2'
+import { useRouter } from "next/router";
 
-const registrar = () => {
+
+const Registrar = () => {
 
     const [persona, setPersona] = useState({
         nombre: '',
@@ -17,13 +20,28 @@ const registrar = () => {
             [e.target.name]: e.target.value
         })
     }
-
-    const submitPersona = (e) => {
+    const router = useRouter()
+    const submitPersona = async (e) => {
         e.preventDefault()
-        createPersona(persona).then(res => {
-            console.log(res.data.nombre)
+        const response = await createPersona(persona)
+    if(response.status === 200){
+        Swal.fire({
+            icon: 'success',
+            title: 'Registrar persona',
+            showCloseButton: true,
+            text: 'Persona registrada correctamente'
+        }).then (() => {
+            router.push('./')
+        })
+    }else {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            showConfirmButton: true,
+            text:'Ocurrió un error al registrar la persona'
         })
     }
+}
 
     return(
         <Box
@@ -56,7 +74,7 @@ const registrar = () => {
                      mt='30px'
                      color='white'
                     >Nombre</FormLabel>
-                    <Input name="nombre" type="text" placeholder="Francisco" onChange={handleChange} value={persona.nombre} />
+                    <Input name="nombre" color='white' type="text" placeholder="Francisco" onChange={handleChange} value={persona.nombre} />
                 </FormControl>
                 <FormControl id="role" isRequired>
                     <FormLabel
@@ -64,7 +82,7 @@ const registrar = () => {
                      mt='30px'
                      color='white'
                      >Rol</FormLabel>
-                    <Select name="role" onChange={handleChange} placeholder='Rol' value={persona.role}>
+                    <Select name="role" color='white' onChange={handleChange} placeholder='Rol' value={persona.role}>
                         <option>user</option>
                         <option>directiva</option>
                     </Select>
@@ -99,4 +117,4 @@ const registrar = () => {
     )
 }
 
-export default registrar;
+export default Registrar;

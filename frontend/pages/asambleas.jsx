@@ -1,5 +1,5 @@
 import {React, useEffect, useState} from "react";
-import { TableContainer, Table, TableCaption, Thead, Tr, Th, Tbody, Td, Heading, Button, Flex, Spacer, Container, Stack, Box } from "@chakra-ui/react"
+import { TableContainer,  Table, TableCaption, Thead, Tr, Th, Tbody, Td, Heading, Button, Flex, Spacer, Container, Stack, Box } from "@chakra-ui/react"
 import { getAsambleas } from '../data/asambleas'
 import {useRouter} from 'next/router'
 
@@ -31,8 +31,8 @@ const asamblea = () => {
                color:'black',
                bg:'white'
        }}
-              onClick={()=> router.push(`./asamblea/${asamblea._id}`)}>Editar</Button></Td>
-            <Td>{asamblea.fecha}</Td>
+              onClick={()=> router.push(`./asamblea/actualizar/${asamblea._id}`)}>Editar</Button></Td>
+            <Td>{asamblea.date}</Td>
             <Td>{asamblea.description}</Td>
             <Td>{asamblea.tipo}</Td>
             <Td><Button 
@@ -47,7 +47,7 @@ const asamblea = () => {
                 color:'black',
                 bg:'white'
         }}
-             >Ver</Button></Td>
+        onClick={()=> router.push(`./asamblea/ver/${asamblea._id}`)}>Ver</Button></Td>
         </Tr>
       )
     })
@@ -112,6 +112,7 @@ const asamblea = () => {
           </Tbody>
       </Table>
     </TableContainer>
+    
     </Flex>
     </Box>
   )

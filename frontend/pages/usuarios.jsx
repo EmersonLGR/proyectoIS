@@ -1,9 +1,9 @@
 import { React, useState , useEffect} from "react"
 import { getPersonas, deletePersona } from "../data/personas"
-import { TableContainer, Table, TableCaption, Thead, Tr, Th, Tbody, Td, Heading, Button, Flex, Box } from "@chakra-ui/react"
+import { TableContainer, Table,Stack,  TableCaption, Thead, Tr, Th, Tbody, Td, Heading, Button, Flex, Box } from "@chakra-ui/react"
 import {useRouter} from 'next/router'
 
-  const persona = () =>{
+  const Persona = () =>{
 
   const  [personas, setPersonas] = useState([{
     role:'',
@@ -53,6 +53,7 @@ useEffect(() => {
         bg='rgb(0 0 0 / 50%)'
         p={['0 10%', null, '0 20%']}
         > 
+        <Stack> 
        <Heading
        color='white'
        textTransform='uppercase'
@@ -81,10 +82,14 @@ useEffect(() => {
            </Tbody>
        </Table>
      </TableContainer>
+     
+     </Stack>
+     <Button colorScheme="green" size="m" onClick={()=>router.push('./')}>Volver</Button> 
      </Flex>
+    
      </Box>
    )
 
 
   }
-  export default persona;
+  export default Persona;

@@ -1,13 +1,16 @@
 import { useState } from "react"
-import { FormControl, FormLabel, Input, Container, Heading, Select, Stack, Button, Textarea, Box, Flex } from '@chakra-ui/react'
+import { FormControl, FormLabel, Input, Container, Heading, Select, Stack, Button, Textarea, Box, Flex, HStack } from '@chakra-ui/react'
 import { createAsamblea } from '../data/asambleas'
 import { useRouter } from "next/router"
+import FormInput from "../components/FormInput"
+import TextareaInput from "../components/TextareaInput"
 
-const AddAsamblea = () => {
+const addAsamblea = () => {
 
     const [asamblea, setAsamblea] = useState({
+       
         date:'',
-        descrition: '',
+        description: '',
         type: ''
     })
 
@@ -22,9 +25,16 @@ const AddAsamblea = () => {
 
     const submitAsamblea = (e) => {
         e.preventDefault()
-        createAsamblea(asamblea).then(res => {
-            console.log(res.data.fecha)
-        })
+        const correo = localStorage.getItem('token')
+        const response = {
+            correo,
+            ...asamblea
+        }
+        createAsamblea(response).then(res => {
+            console.log(res.data.date)
+        }).catch(error=> console.log(error))
+        router.push('/asambleas')
+      
     }
 
     return(
@@ -54,22 +64,11 @@ const AddAsamblea = () => {
                    fontWeight='light'
                    letterSpacing='5px'  
                 >Crear Asamblea</Heading>
-                <FormControl id="date" isRequired>
-                    <FormLabel>Fecha</FormLabel>
-                        <Input type='date' name={"date"} onChange={handleChange}/>
-                </FormControl>
-                <FormControl id="type" isRequired>
-                    <FormLabel>Tipo</FormLabel>
-                    <Select name="tipo" onChange={handleChange} placeholder='Tipo'>
-                        <option>Informativa</option>
-                        <option>Extraordinaria</option>
-                    </Select>
-                </FormControl>
-                <FormControl id="description" isRequired>
-                    <FormLabel>Descripción</FormLabel>
-                    <Textarea name={"description"} onChange={handleChange}></Textarea>
-                </FormControl>
-            </Stack>
+                <TextareaInput label="Fecha" handleChange={handleChange} name="date" placeholder="Fecha debe ser: dd-mm-yyyy" value={asamblea.date} />
+                <TextareaInput label="Tipo" handleChange={handleChange} name="type" placeholder="Informativa o Extraordinaria" value={asamblea.type} />
+                <TextareaInput label="Información" handleChange={handleChange} name="description" placeholder="Información" value={asamblea.description} />
+            
+            <HStack>
             <Button
             variant='outline'
             size='lg'
@@ -79,29 +78,32 @@ const AddAsamblea = () => {
             color='white'
             colorScheme='teal'
             letterSpacing='1px'
-                     _hover={{
-                     color:'black',
-                     bg:'green'
-             }}
+            _hover={{
+            color:'black',
+            bg:'green'
+            }}
+            onClick={submitAsamblea}
             >Agregar</Button>
-            <Button 
-             variant='outline'
-             size='lg'
-             textTransform='uppercase'
-             fontWeight='light'
-             borderRadius='0'
-             color='white'
-             colorScheme='teal'
-             letterSpacing='1px'
-                      _hover={{
-                      color:'black',
-                      bg:'red'
-              }}
-            colorScheme={"red"} onClick={()=>router.push('./asambleas')}>Cancelar
+            <Button
+            variant='outline'
+            size='lg'
+            textTransform='uppercase'
+            fontWeight='light'
+            borderRadius='0'
+            color='white'
+            colorScheme='teal'
+            letterSpacing='1px'
+            _hover={{
+            color:'black',
+            bg:'red'
+            }}
+            onClick={()=>router.push('./asambleas')}>Cancelar
             </Button>
+            </HStack>
+            </Stack>
             </Flex>
             </Box>
     )
 }
 
-export default AddAsamblea;
+export default addAsamblea;

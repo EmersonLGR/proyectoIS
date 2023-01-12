@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useState} from "react";
 import {login} from '../data/personas'
 
-const iniciarSesion = () => {
+const IniciarSesion = () => {
 
     const [correo, setCorreo] = useState('')
     const router = useRouter()
@@ -49,12 +49,10 @@ const iniciarSesion = () => {
             >
                 <FormControl id="correo" isRequired>
                     <FormLabel spacing='40px'
-                     mt='30px'>Correo Electronico</FormLabel>
+                     mt='30px' color='white' >Correo Electronico</FormLabel>
                     <Input  color='white' placeholder="example@email.com" onChange={handleChange}/>
                 </FormControl>
-            </Stack>
-            <Center>
-            <Button
+                <Button
             variant='outline'
             size='lg'
             textTransform='uppercase'
@@ -67,10 +65,13 @@ const iniciarSesion = () => {
             bg:'white'}}
             onClick={onSubmit}> Identidad
             </Button>
+            </Stack>
+            <Center>
+          
             </Center>
             </Flex>
             </Box>
     )
 }
 
-export default iniciarSesion;
+export default IniciarSesion;

@@ -2,7 +2,8 @@ import {React, useEffect, useState} from "react";
 import { TableContainer, Table, Thead, Tr, Th, Tbody, Td, Heading, Button, Spacer, Container, Box, Flex } from "@chakra-ui/react"
 import {useRouter} from 'next/router'
 import { getComentarios } from "../data/comentarios"
-const comentarios = () => {
+
+const Comentarios = () => {
 
   const [comentarios, setComentario] = useState([{
     _id: '',
@@ -89,11 +90,11 @@ const comentarios = () => {
                color:'black',
                bg:'red'
        }}
-      colorScheme={"red"} onClick={()=>router.push('./asambleas')}>Cancelar</Button>
+     onClick={()=>router.push('./asambleas')}>Cancelar</Button>
     </TableContainer>
     </Flex>
     </Box>
   )
 }
 
-export default comentarios;
+export default Comentarios;

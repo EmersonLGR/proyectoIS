@@ -24,7 +24,7 @@ const getPersonas = (req, res) => {
     })
 }
 
-const getSpecificPersona = (req, res) => {
+const getPersona = (req, res) => {
     const {id} = req.params;
     Persona.findById(id, (err, persona) => {
         if(err){
@@ -39,6 +39,7 @@ const getSpecificPersona = (req, res) => {
 
 const updatePersona = (req, res) => {
     const {id} = req.params;
+    console.log("id", id, "body", req.body)
     Persona.findByIdAndUpdate(id, req.body, (err, persona) => {
         if(err){
             return res.status(400)
@@ -64,7 +65,7 @@ const login = (req, res) => {
 module.exports = {
     createPersona,
     getPersonas,
-    getSpecificPersona,
+    getPersona,
     updatePersona,
     deletePersona,
     login

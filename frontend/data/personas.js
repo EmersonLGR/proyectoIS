@@ -21,7 +21,7 @@ const updatePersona = (id, persona) => {
 }
 
 const deletePersona = (id) => {
-    const response = axios.get(`${process.env.SERVIDOR}/persona/delete/${id}`, persona);
+    const response = axios.get(`${process.env.SERVIDOR}/persona/delete/${id}`);
     return response
 }
 
