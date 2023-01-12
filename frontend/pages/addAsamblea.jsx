@@ -3,7 +3,7 @@ import { FormControl, FormLabel, Input, Container, Heading, Select, Stack, Butto
 import { createAsamblea } from '../data/asambleas'
 import { useRouter } from "next/router"
 
-const addAsamblea = () => {
+const AddAsamblea = () => {
 
     const [asamblea, setAsamblea] = useState({
         date:'',
@@ -104,4 +104,4 @@ const addAsamblea = () => {
     )
 }
 
-export default addAsamblea;
+export default AddAsamblea;
