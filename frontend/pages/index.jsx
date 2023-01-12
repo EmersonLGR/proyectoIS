@@ -1,9 +1,11 @@
-import { Button, Box, Heading, Stack, Flex } from "@chakra-ui/react";
+import { Button, Box, Heading, Stack, Flex, HStack } from "@chakra-ui/react";
 import { React } from "react"
 import { useRouter } from 'next/router'
+import { Grid, GridItem } from '@chakra-ui/react'
 
 
-const index = () => {
+
+const Index = () => {
 
   const router = useRouter()
 
@@ -66,10 +68,32 @@ const index = () => {
         >
           Registrar
         </Button>
+        <HStack> 
+        <Button variant='outline'
+        size='lg'
+        textTransform='uppercase'
+        fontWeight='light'
+        borderRadius='0'
+        color='white'
+        letterSpacing='1px'
+        _hover={{
+          color:'black',
+          bg:'white'
+        }}
+        onClick={()=>router.push('./usuarios')}
+        >
+         Usuarios
+        </Button>
+        </HStack>
       </Stack>
+      
+      
       </Flex>
       </Box>
+     
   )
 }
 
-export default index;
+export default Index;
+
+
